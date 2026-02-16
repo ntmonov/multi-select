@@ -1,0 +1,30 @@
+<div class="container">
+  <div>Други държави на престой</div>
+  <div>{{ selected() }}</div>
+  <div class="filter">
+    <input type="text" (input)="filter($event)" (focus)="opened = true" #filterInput>
+    <img [src]="opened ? '/assets/up.svg' : '/assets/down.svg'" (click)="opened = !opened">
+  </div>
+  <div class="list" [ngClass]="{'opened': opened}">
+    <div class="selected item">
+      <span>{{ selectedCount() }}</span>
+      <span class="removeAll" *ngIf="selectedValues.length > 0" (click)="this.selectedValues = []">Премахни всички</span>
+    </div>
+    <ng-container *ngFor="let option of options">
+      <ng-container *ngIf="option.enabled">
+        <div class="item">
+          <label>
+            <input
+              type="checkbox"
+              [checked]="isSelected(option.value)"
+              [disabled]="selectedValues.length >= maxSelected &&
+                          selectedValues.indexOf(option.value) === -1"
+              (change)="toggleSelection(option.value)"
+            />
+              {{ option.label }}
+          </label>
+        </div>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>

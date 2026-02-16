@@ -1,0 +1,55 @@
+.filter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+
+  input {
+    flex: 1;
+    border: 0;
+    border-bottom: 1px solid #CCC;
+
+    &:focus {
+      outline: 0;
+    }
+  }
+}
+
+.list {
+  height: 0;
+  opacity: 0;
+  display: none;
+  width: 100%;
+  border: 1px solid black;
+  transition: all 1000ms linear;
+  max-height: 200px;
+  overflow-y: scroll;
+
+  &.opened {
+    opacity: 1;
+    height: auto;
+    display: block;
+  }
+
+  .item {
+    margin-left: 16px;
+    margin-right: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid #CCC;
+  }
+
+  label {
+    cursor: pointer;
+    width: 100%;
+    display: inline-block;
+  }
+
+  .selected {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .removeAll {
+    cursor: pointer;
+  }
+}
